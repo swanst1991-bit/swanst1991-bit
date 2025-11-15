@@ -1,0 +1,20 @@
+[
+  {
+    "kpi": "Percentage of vuln cases with tailored plans",
+    "target": "80%",
+    "source": "PS22/9 Feb 2025",
+    "sql_query": "SELECT (COUNT(CASE WHEN plan_type = 'tailored' THEN 1 END) * 100.0 / COUNT(*)) AS percent FROM vuln_cases WHERE date >= '2025-01-01'"
+  },
+  {
+    "kpi": "Average resolution time for vuln escalations",
+    "target": "48 hours",
+    "source": "FG21/1",
+    "sql_query": "SELECT AVG(DATEDIFF(hour, created_at, resolved_at)) AS avg_hours FROM vuln_cases WHERE escalated = 1"
+  },
+  {
+    "kpi": "Customer outcome satisfaction score",
+    "target": "4/5",
+    "source": "Consumer Duty outcome metrics",
+    "sql_query": "SELECT AVG(satisfaction_score) AS avg_score FROM vuln_feedback WHERE date >= '2025-01-01'"
+  }
+]
